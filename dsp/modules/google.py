@@ -90,7 +90,7 @@ class Google(LM):
             "candidate_count": 1,
             "temperature": 0.0 if "temperature" not in kwargs else kwargs["temperature"],
             "max_output_tokens": 2048,
-            "top_p": 1,
+            "top_p": 0,
             "top_k": 1,
             **kwargs,
         }

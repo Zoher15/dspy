@@ -56,7 +56,7 @@ class Claude(LM):
         self.kwargs = {
             "temperature": kwargs.get("temperature", 0.0),
             "max_tokens": min(kwargs.get("max_tokens", 4096), 4096),
-            "top_p": kwargs.get("top_p", 1.0),
+            "top_p": kwargs.get("top_p", 0),
             "top_k": kwargs.get("top_k", 1),
             "n": kwargs.pop("n", kwargs.pop("num_generations", 1)),
             **kwargs,

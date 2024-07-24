@@ -36,7 +36,7 @@ class OllamaLocal(LM):
         timeout_s: float = 120,
         temperature: float = 0.0,
         max_tokens: int = 150,
-        top_p: int = 1,
+        top_p: int = 0,
         top_k: int = 20,
         frequency_penalty: float = 0,
         presence_penalty: float = 0,

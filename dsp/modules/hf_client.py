@@ -39,7 +39,7 @@ class HFClientTGI(HFModel):
             "url": url,
             "temperature": 0.01,
             "max_tokens": 75,
-            "top_p": 0.97,
+            "top_p": 0.0,
             "n": 1,
             "stop": ["\n", "\n\n"],
             **kwargs,

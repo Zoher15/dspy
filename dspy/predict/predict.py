@@ -90,15 +90,17 @@ class Predict(Module, Parameter):
         lm = kwargs.pop("lm", self.lm) or dsp.settings.lm
         assert lm is not None, "No LM is loaded."
 
-        # If temperature is 0.0 but its n > 1, set temperature to 0.7.
+        # If temperature is 0.0 and top_p is 0.0 but its n > 1, set temperature to 0.7.
         temperature = config.get("temperature")
         temperature = lm.kwargs["temperature"] if temperature is None else temperature
+        top_p = config.get("top_p")
+        top_p = lm.kwargs["top_p"] if top_p is None else top_p
 
         num_generations = config.get("n")
         if num_generations is None:
             num_generations = lm.kwargs.get("n", lm.kwargs.get("num_generations", 1))
 
-        if (temperature is None or temperature <= 0.15) and num_generations > 1:
+        if (temperature is None or temperature <= 0.15) and (top_p is None or top_p==0) and num_generations > 1:
             config["temperature"] = 0.7
             # print(f"#> Setting temperature to 0.7 since n={num_generations} and prior temperature={temperature}.")
 
